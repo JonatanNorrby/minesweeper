@@ -7,9 +7,6 @@ const tiles = [];
 const mineLabel = document.querySelector("#mines-left");
 const timerLabel = document.querySelector("#timer");
 const bestLabel = document.querySelector("#best");
-const statusTitle = document.querySelector("#status-title");
-const statusDetail = document.querySelector("#status-detail");
-const statusSymbol = document.querySelector("#status-symbol");
 const flagButton = document.querySelector("#flag-mode");
 const flagState = document.querySelector("#flag-mode-state");
 let flagMode = false;
@@ -81,18 +78,6 @@ function render() {
   timerLabel.textContent = formatTime(elapsedSeconds);
   bestLabel.textContent = best === null ? "--:--" : formatTime(best);
 
-  const messages = {
-    ready: ["☺", "Ready to play?", "Your first reveal is always safe."],
-    playing: ["☺", "Keep it going!", "Find the safe tiles. Use flags to mark mines."],
-    lost: ["×", "Boom! Game over.", "One wrong move. Give it another try."],
-    won: ["★", "Board cleared!", "All safe tiles found. Great work!"]
-  };
-  const [symbol, title, description] = messages[game.status];
-  statusSymbol.textContent = symbol;
-  statusTitle.textContent = title;
-  statusDetail.textContent = description;
-  document.querySelector(".game-panel").dataset.state = game.status;
-
   for (let i = 0; i < tiles.length; i++) {
     const button = tiles[i];
     const cell = game.cells[i];
@@ -136,9 +121,8 @@ function reveal(index) {
   const wasStarted = game.started;
   if (!game.reveal(index)) return;
   if (!wasStarted && game.started) startClock();
-  const newBest = finishIfNecessary();
+  finishIfNecessary();
   render();
-  if (newBest) statusDetail.textContent = "New personal best! Saved on this device.";
 }
 function toggleFlag(index) {
   if (game.toggleFlag(index)) render();
