@@ -50,7 +50,8 @@ function startClock() {
   updateClock();
 }
 function stopClock() {
-  updateClock();
+  if (startedAt) elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+  timerLabel.textContent = formatTime(elapsedSeconds);
   clearInterval(interval);
   interval = null;
 }
@@ -127,24 +128,17 @@ function render() {
 }
 
 function finishIfNecessary() {
-  if (game.status === "won" || game.status === "lost") {
-    stopClock();
-    if (game.status === "won" && saveBest()) {
-      // Shown in the status message after render.
-      render();
-      statusDetail.textContent = "New personal best! Your time is saved on this device.";
-    }
-  }
+  if (game.status !== "won" && game.status !== "lost") return false;
+  stopClock();
+  return game.status === "won" && saveBest();
 }
 function reveal(index) {
   const wasStarted = game.started;
   if (!game.reveal(index)) return;
   if (!wasStarted && game.started) startClock();
-  finishIfNecessary();
+  const newBest = finishIfNecessary();
   render();
-  if (game.status === "won" && best === elapsedSeconds) {
-    statusDetail.textContent = "Board cleared! Best time: " + formatTime(best) + ".";
-  }
+  if (newBest) statusDetail.textContent = "New personal best! Saved on this device.";
 }
 function toggleFlag(index) {
   if (game.toggleFlag(index)) render();
