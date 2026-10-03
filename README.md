@@ -18,11 +18,12 @@ https://jonatannorrby.github.io/minesweeper/
 
 ## Development
 
-No build tools required. Serve the repository with a static web server (ES modules should not be loaded directly from a `file://` URL).
+No browser dependencies required. The deployed `game.js` is a standalone browser script generated from `logic.mjs` and `ui.js`. Serve the repository using any static web server.
 
 Run game-rule tests with Node 22+:
 
 ```sh
+node scripts/build.mjs
 node --test tests/*.test.mjs
 ```
 

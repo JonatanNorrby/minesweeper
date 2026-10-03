@@ -21,12 +21,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test game rules
+      - name: Generate standalone browser script
+        run: node scripts/build.mjs
+      - name: Test game rules and browser click handling
         run: node --test tests/*.test.mjs
-      - name: Check JavaScript syntax
+      - name: Check JavaScript syntax and committed bundle
         run: |
           node --check game.js
           node --check logic.mjs
+          git diff --exit-code -- game.js
 
   deploy:
     needs: test
