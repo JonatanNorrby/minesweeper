@@ -40,12 +40,7 @@ h1 { font-size: clamp(21px, 5.1vw, 29px); font-weight: 850; letter-spacing: -.05
 .stat-number { font-variant-numeric: tabular-nums; margin-top: 9px; font-size: clamp(26px, 5.8vw, 36px); line-height: 1; letter-spacing: -.065em; font-weight: 800; }
 .best-stat .stat-number { color: var(--accent); }
 .game-panel { overflow: hidden; border-radius: 12px; background: var(--panel); border: 1px solid #395060; box-shadow: 0 20px 54px #00000030; }
-.game-toolbar { padding: 17px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--panel-border); }
-.status-group { display: flex; align-items: center; gap: 11px; min-width: 0; }
-.status-symbol { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 10px; display: grid; place-items: center; background: #304252; color: var(--accent); font-size: 24px; line-height: 1; }
-.status-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.status-copy strong { font-size: 13px; }
-.status-copy span { color: var(--muted); font-size: 11px; }
+.game-toolbar { padding: 17px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; border-bottom: 1px solid var(--panel-border); }
 .restart { border: 1px solid #4d626f; background: #2b4050; color: #edf3f1; border-radius: 7px; padding: 10px 13px; font-size: 12px; font-weight: 750; white-space: nowrap; transition: background .15s; }
 .restart:hover { background: #40596a; }
 .restart span { color: var(--accent); font-size: 19px; vertical-align: -2px; margin-right: 5px; line-height: 0; }
@@ -80,7 +75,6 @@ h1 { font-size: clamp(21px, 5.1vw, 29px); font-weight: 850; letter-spacing: -.05
   .stat-label { font-size: 8px; letter-spacing: .045em; }
   .stat-icon { margin-right: 1px; font-size: 12px; }
   .game-toolbar { padding: 13px 11px; }
-  .status-copy span { font-size: 10px; }
   .restart { padding: 9px 10px; }
   .board-area { padding: 13px 7px; }
   .board { gap: 1px; padding: 3px; }
