@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101923">
+  <meta name="description" content="A polished, medium-difficulty Minesweeper game. Clear 40 mines on a 16 × 16 board and beat your personal best.">
+  <title>Minesweeper · Medium</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./game.js" type="module"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">✳</span>
+        <div>
+          <p class="eyebrow">THE CLASSIC PUZZLE</p>
+          <h1>MINESWEEPER<span class="title-dot">.</span></h1>
+        </div>
+      </div>
+      <div class="difficulty"><span class="difficulty-indicator" aria-hidden="true"></span> MEDIUM <span class="divider" aria-hidden="true">/</span> 16 × 16</div>
+    </header>
+
+    <section class="scoreboard" aria-label="Game statistics">
+      <div class="stat">
+        <div class="stat-label"><span class="stat-icon" aria-hidden="true">⚑</span> MINES LEFT</div>
+        <div id="mines-left" class="stat-number" aria-live="polite">040</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label"><span class="stat-icon" aria-hidden="true">◷</span> YOUR TIME</div>
+        <div id="timer" class="stat-number" role="timer">00:00</div>
+      </div>
+      <div class="stat best-stat">
+        <div class="stat-label"><span class="stat-icon" aria-hidden="true">★</span> PERSONAL BEST</div>
+        <div id="best" class="stat-number">--:--</div>
+      </div>
+    </section>
+
+    <section class="game-panel" aria-label="Minesweeper">
+      <div class="game-toolbar">
+        <div class="status-group">
+          <span id="status-symbol" class="status-symbol" aria-hidden="true">☺</span>
+          <div class="status-copy" role="status" aria-live="polite">
+            <strong id="status-title">Ready to play?</strong>
+            <span id="status-detail">Your first reveal is always safe.</span>
+          </div>
+        </div>
+        <button id="restart" class="restart" type="button"><span aria-hidden="true">↻</span> New game</button>
+      </div>
+
+      <div class="board-area">
+        <div id="board" class="board" aria-label="Medium Minesweeper board, 16 columns and 16 rows"></div>
+      </div>
+
+      <div class="panel-bottom">
+        <button id="flag-mode" class="flag-mode" type="button" aria-pressed="false">
+          <span aria-hidden="true">⚑</span> Flag mode <span id="flag-mode-state" class="mode-state">OFF</span>
+        </button>
+        <span class="panel-tip">Reveal all safe tiles to win</span>
+      </div>
+    </section>
+
+    <footer class="instructions">
+      <div><span class="key">CLICK</span> Reveal a tile</div>
+      <div><span class="key">RIGHT CLICK</span> Place a flag</div>
+      <div><span class="key">TOUCH</span> Hold to flag, or use Flag mode</div>
+      <div class="footnote">Your best time is saved on this device.</div>
+    </footer>
+  </main>
+</body>
+</html>
