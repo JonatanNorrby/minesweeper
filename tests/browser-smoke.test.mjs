@@ -51,6 +51,8 @@ test("deployed script builds the board and a tile click actually reveals it", as
     },
     setInterval() { return 1; },
     clearInterval() {},
+    setTimeout() { return 1; },
+    clearTimeout() {},
     performance: { now() { return 100; } }
   });
   vm.runInContext(source, context, { filename: "game.js" });
